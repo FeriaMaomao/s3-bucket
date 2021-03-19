@@ -7,7 +7,7 @@ frameworkVersion: '>=2.0.0 <2.4.0'
 
 custom:
   # Set Bucket name to deploy
-  bucketNameDeploy: s3-bucket-${self:provider.stage}
+  bucketName: s3-bucket-${self:provider.stage}
 
 provider:
   # Set cloud provider (AWS)
