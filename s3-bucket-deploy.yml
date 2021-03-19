@@ -1,5 +1,5 @@
 Resources:
-  S3DeployBucketResource:
+  S3BucketResource:
     Type: AWS::S3::Bucket
     Properties:
       # A canned access control list (ACL) that grants predefined permissions to the Bucket

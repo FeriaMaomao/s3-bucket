@@ -28,8 +28,8 @@ resources:
   - ${file(s3-bucket-deploy.yml)}
 
   - Outputs:
-      S3DeployBucketResource:
+      S3BucketResource:
         Description: URL for Deploy and File on S3
         Value: !GetAtt [DeployBucketResource, Arn]
         Export:
-          Name: DeployBucketResource-${self:provider.stage}
+          Name: BucketResource-${self:provider.stage}
