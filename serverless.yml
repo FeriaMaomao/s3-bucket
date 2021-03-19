@@ -1,0 +1,35 @@
+service:
+  # Define Service Name
+  # intl-co-oficina-linea-infra-front-cloudformation-${self:provider.stage}
+  name: s3-bucket-deploy-${self:provider.stage}
+
+frameworkVersion: '>=2.0.0 <2.4.0'
+
+custom:
+  # Set Bucket name to deploy
+  bucketNameDeploy: s3-bucket-${self:provider.stage}
+
+provider:
+  # Set cloud provider (AWS)
+  name: aws
+  # Set the default Stage used. Default is dev
+  stage: ${opt:stage, 'dev'}
+  # Set Region to deploy service. Default is us-east-1
+  region: ${opt:region, 'us-east-1'}
+  # Set CloudFormation Stack Name
+  stackName: ${self:service.name}
+  # Deploy bucket name
+  deploymentBucket:
+    name: s3-${self:provider.stage}-deploybucket
+
+# The "Resources" separated with CloudFormation templates
+resources:
+  - Resources:
+  - ${file(s3-bucket-deploy.yml)}
+
+  - Outputs:
+      S3DeployBucketResource:
+        Description: URL for Deploy and File on S3
+        Value: !GetAtt [DeployBucketResource, Arn]
+        Export:
+          Name: DeployBucketResource-${self:provider.stage}

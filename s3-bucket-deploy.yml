@@ -1,0 +1,13 @@
+Resources:
+  S3DeployBucketResource:
+    Type: AWS::S3::Bucket
+    Properties:
+      # A canned access control list (ACL) that grants predefined permissions to the Bucket
+      AccessControl: PublicRead
+      # A name for the Bucket
+      BucketName: '${file(serverless.yml):custom.bucketNameDeploy}'
+      # An arbitrary set of tags (key-value pairs) for this Bucket
+      Tags:
+        -
+          Key: Name
+          Value: S3-Bucket-Deploy
