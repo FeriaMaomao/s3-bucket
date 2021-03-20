@@ -36,3 +36,5 @@ Resources:
             # What the effect will be when the user request the specific ations (could be allow or deny)
             Effect: "Allow"
             Resource: !Join ['', ['arn:aws:s3:::', 'tv-s3-bucket', '/*']]
+            Principal:
+              AWS: "*"
