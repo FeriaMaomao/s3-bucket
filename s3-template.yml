@@ -20,3 +20,19 @@ Resources:
       Tags:
         - Key: Name
           Value: S3-Bucket-WebApp
+  S3BucketPolicyResource:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      # The name of the Amazon S3 Bucket to which the policy applies
+      Bucket: !Ref 'S3BucketResource'
+      # A policy document containing permissions to add to the specified Bucket
+      PolicyDocument:
+        Statement:
+          -
+            # For each resource, specified the operations that will allow (or deny)
+            Action:
+              - "s3:GetObject"
+              - "s3:PutObject"
+            # What the effect will be when the user request the specific ations (could be allow or deny)
+            Effect: "Allow"
+            Resource: !Join ['', ['arn:aws:s3:::', 'tv-s3-bucket', '/*']]
