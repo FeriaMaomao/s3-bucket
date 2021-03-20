@@ -11,7 +11,7 @@ Resources:
     # Properties Deploy Service
     Properties:
       AccessControl: PublicRead
-      BucketName: tv-s3-buecket
+      BucketName: tv-s3-bucket
       PublicAccessBlockConfiguration:
         BlockPublicAcls: false
         BlockPublicPolicy: false
