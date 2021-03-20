@@ -1,0 +1,22 @@
+# Template Version
+AWSTemplateFormatVersion: '2010-09-09'
+# Description Service
+Description: AWS CloudFormation Create S3 bucket
+# Resources to Deploy
+Resources:
+  # Resource name
+  S3BucketResource:
+    # Resource Type
+    Type: 'AWS::S3::Bucket'
+    # Properties Deploy Service
+    Properties:
+      AccessControl: PublicRead
+      BucketName: tv-s3-buecket
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+      Tags:
+        - Key: Name
+          Value: S3-Bucket-WebApp
